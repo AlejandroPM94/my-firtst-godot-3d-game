@@ -5,9 +5,16 @@ export (PackedScene) var mob_scene
 
 func _ready():
 	randomize()
+	$UserInterface/Retry.hide()
 
 
-func _on_MoTimer_timeout():
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept") and $UserInterface/Retry.visible:
+		# This restarts the current scene.
+		get_tree().reload_current_scene()
+
+
+func _on_MobTimer_timeout():
 	# Create a new instance of the Mob scene.
 	var mob = mob_scene.instance()
 	
@@ -21,3 +28,12 @@ func _on_MoTimer_timeout():
 	mob.initialize(mob_spawn_location.translation, player_position)
 	
 	add_child(mob)
+	
+	# We connect the mob to the score label to update the score upon squashing one.
+	mob.connect("squashed", $UserInterface/ScoreLabel, "_on_Mob_squashed")
+
+
+func _on_Player_hit():
+	$MobTimer.stop()
+	$UserInterface/Retry.show()
+

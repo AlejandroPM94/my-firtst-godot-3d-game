@@ -7,6 +7,9 @@ export var max_speed = 18
 
 var velocity = Vector3.ZERO
 
+# Emitted when the player jumped on the mob.
+signal squashed
+
 
 func _physics_process(_delta):
 	# warning-ignore:return_value_discarded
@@ -30,4 +33,9 @@ func initialize(start_position, player_position):
 
 
 func _on_VisibilityNotifier_screen_exited():
+	queue_free()
+
+
+func squash():
+	emit_signal("squashed")
 	queue_free()
