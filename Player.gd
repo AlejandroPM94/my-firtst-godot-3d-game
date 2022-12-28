@@ -71,5 +71,5 @@ func die():
 	emit_signal("hit")
 	queue_free()
 
-func _on_MobDetector_body_entered(body):
+func _on_MobDetector_body_entered(_body):
 	die()
