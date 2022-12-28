@@ -54,6 +54,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310404, 0.278246 )
 aabb = AABB( -1.29703, -0.443166, -1.77746, 2.59405, 0.886332, 3.55492 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "float"
 anims/float = SubResource( 2 )
 
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

@@ -67,6 +67,7 @@ tracks/1/keys = {
 }
 
 [node name="Player" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0897827, 0 )
 collision_mask = 6
 script = ExtResource( 2 )
 
